@@ -1,16 +1,11 @@
-import { Link } from "react-router-dom";
+import { UserButton } from "@clerk/clerk-react";
 
 export default function DashboardPage() {
   return (
     <>
+      <UserButton />
       <h1>Dashboard page</h1>
       <p>This is a protected page.</p>
-
-      <ul>
-        <li>
-          <Link to="/">Return to index</Link>
-        </li>
-      </ul>
     </>
   );
 }
