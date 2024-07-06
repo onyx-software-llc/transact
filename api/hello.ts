@@ -3,5 +3,6 @@ export const config = {
 };
 
 export function GET(request: Request) {
+  console.log("requeset", request);
   return new Response(`Hello from ${process.env.VERCEL_REGION}`);
 }
