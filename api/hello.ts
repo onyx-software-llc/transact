@@ -1,8 +1,0 @@
-export const config = {
-  runtime: "edge",
-};
-
-export function GET(request: Request) {
-  console.log("requeset", request);
-  return new Response(`Hello from ${process.env.VERCEL_REGION}`);
-}
