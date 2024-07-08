@@ -2,11 +2,16 @@ import * as React from "react";
 import { useAuth } from "@clerk/clerk-react";
 import { Outlet, useNavigate } from "react-router-dom";
 
+import Navbar from "@/components/Navbar";
+import AuthProvider from "@/lib/providers/AuthProvider";
+
+/**
+ * @returns Outlet - which will resolve into a Child element
+ * defined in createBrowserRouter config
+ */
 export default function DashboardLayout() {
   const { userId, isLoaded } = useAuth();
   const navigate = useNavigate();
-
-  console.log("test", userId);
 
   React.useEffect(() => {
     if (isLoaded && !userId) {
@@ -14,7 +19,12 @@ export default function DashboardLayout() {
     }
   }, [isLoaded]);
 
-  if (!isLoaded) return "Loading...";
-
-  return <Outlet />;
+  return (
+    <AuthProvider userId={userId}>
+      <div className="flex flex-col w-screen">
+        <Navbar />
+        <div>{isLoaded && <Outlet />}</div>
+      </div>
+    </AuthProvider>
+  );
 }

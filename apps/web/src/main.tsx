@@ -11,6 +11,8 @@ import IndexPage from "@/routes";
 import SignInPage from "@/routes/sign-in";
 import SignUpPage from "@/routes/sign-up";
 import DashboardPage from "@/routes/dashboard";
+import DashboardTransactionsPage from "@/routes/dashboard.transactions";
+import DashboardAccounts from "@/routes/dashboard.accounts";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +24,17 @@ const router = createBrowserRouter([
       {
         element: <DashboardLayout />,
         path: "dashboard",
-        children: [{ path: "/dashboard", element: <DashboardPage /> }],
+        children: [
+          { path: "/dashboard", element: <DashboardPage /> },
+          {
+            path: "/dashboard/transactions",
+            element: <DashboardTransactionsPage />,
+          },
+          {
+            path: "/dashboard/accounts",
+            element: <DashboardAccounts />,
+          },
+        ],
       },
     ],
   },
