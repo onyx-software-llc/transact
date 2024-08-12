@@ -31,10 +31,10 @@ export default function DashboardLayout() {
   }, [isLoaded]);
 
   return (
-    <AuthProvider userId={userId}>
+    <AuthProvider userId={userId} linkToken={data?.link_token}>
       <div className="flex flex-col w-screen">
         <Navbar />
-        <div>{isLoaded && <Outlet />}</div>
+        <Outlet />
       </div>
     </AuthProvider>
   );

@@ -5,8 +5,10 @@ import axios from "axios";
  * @param userId
  * @returns
  */
-export const createLinkToken = async (userId: string) => {
+export const createLinkToken = async (userId: string | unknown | null) => {
   try {
+    if (!userId) return;
+
     const response = await axios.post(
       "http://localhost:5001/api/create_link_token",
       { user_id: userId }
