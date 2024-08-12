@@ -1,6 +1,12 @@
 import cors from "cors";
 import express, { Request, Response } from "express";
-import { Configuration, PlaidApi, PlaidEnvironments } from "plaid";
+import {
+  Configuration,
+  CountryCode,
+  PlaidApi,
+  PlaidEnvironments,
+  Products,
+} from "plaid";
 import bodyParser from "body-parser";
 
 require("dotenv").config();
@@ -31,10 +37,10 @@ app.post(
     const request = {
       user: { client_user_id: clientUserId },
       client_name: "Transact",
-      products: ["auth"],
+      products: [Products.Auth],
       language: "en",
       redirect_uri: "http://localhost:5173/dashboard",
-      country_codes: ["US"],
+      country_codes: [CountryCode.Us],
     };
     try {
       const createTokenResponse = await plaidClient.linkTokenCreate(request);
@@ -45,5 +51,25 @@ app.post(
     }
   }
 );
+
+app.post("/api/set_access_token", function (request, response, next) {
+  Promise.resolve()
+    .then(async function () {
+      const tokenResponse = await plaidClient.itemPublicTokenExchange({
+        public_token: request.body.public_token,
+      });
+
+      console.info("access_token: ", tokenResponse.data.access_token);
+      console.info("item_id: ", tokenResponse.data.item_id);
+
+      response.json({
+        // the 'access_token' is a private token, DO NOT pass this token to the frontend in your production environment
+        // access_token: tokenResponse.data.access_token,
+        item_id: tokenResponse.data.item_id,
+        error: null,
+      });
+    })
+    .catch(next);
+});
 
 app.listen(port, () => console.log(`Listening on http://localhost:${port}`));
