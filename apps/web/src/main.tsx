@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./globals.css";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import RootLayout from "@/layouts/root-layout.tsx";
 import DashboardLayout from "@/layouts/dashboard-layout";
@@ -13,6 +14,8 @@ import SignUpPage from "@/routes/sign-up";
 import DashboardPage from "@/routes/dashboard";
 import DashboardTransactionsPage from "@/routes/dashboard.transactions";
 import DashboardAccounts from "@/routes/dashboard.accounts";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -42,6 +45,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );
