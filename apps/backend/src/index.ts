@@ -28,7 +28,7 @@ const app = express();
 const port = 5001;
 
 app.use(bodyParser.json());
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "http://localhost:5173" }));
 
 app.post(
   "/api/create_link_token",
