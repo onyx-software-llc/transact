@@ -54,6 +54,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.1.0
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@tanstack/query-core':
+        specifier: ^5.51.21
+        version: 5.51.21
       '@tanstack/react-query':
         specifier: ^5.50.1
         version: 5.50.1(react@18.3.1)
@@ -66,6 +69,12 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      jotai:
+        specifier: ^2.9.2
+        version: 2.9.2(@types/react@18.3.3)(react@18.3.1)
+      jotai-tanstack-query:
+        specifier: ^0.8.6
+        version: 0.8.6(@tanstack/query-core@5.51.21)(jotai@2.9.2(@types/react@18.3.3)(react@18.3.1))
       lucide-react:
         specifier: ^0.400.0
         version: 0.400.0(react@18.3.1)
@@ -687,6 +696,9 @@ packages:
 
   '@tanstack/query-core@5.50.1':
     resolution: {integrity: sha512-lpfhKPrJlyV2DSVcQb/HuozH3Av3kws4ge22agx+lNGpFkS4vLZ7St0l3GLwlAD+bqB+qXGex3JdRKUNtMviEQ==}
+
+  '@tanstack/query-core@5.51.21':
+    resolution: {integrity: sha512-POQxm42IUp6n89kKWF4IZi18v3fxQWFRolvBA6phNVmA8psdfB1MvDnGacCJdS+EOX12w/CyHM62z//rHmYmvw==}
 
   '@tanstack/react-query@5.50.1':
     resolution: {integrity: sha512-s0DW3rVBDPReDDovUjVqItVa3R2nPfUANK9nqGvarO2DwTiY9U4EBTsqizMxItRCoGgK5apeM7D3mxlHrSKpdQ==}
@@ -1356,6 +1368,24 @@ packages:
   jiti@1.21.6:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
+
+  jotai-tanstack-query@0.8.6:
+    resolution: {integrity: sha512-ChzeDnI5FYtK8KHHj6RLe7igj0FahAxZ+X2d+4kqZsqte03PISXglVAW0KnJybRnMVe3H0z3EuJE7wMhW3WKfg==}
+    peerDependencies:
+      '@tanstack/query-core': '*'
+      jotai: '>=2.0.0'
+
+  jotai@2.9.2:
+    resolution: {integrity: sha512-jIBXEadOHCziOuMY6HAy2KQcHipGhnsbF+twqh8Lcmcz/Yei0gdBtW5mOYdKmbQxGqkvfvXM3w/oHtJ2WNGSFg==}
+    engines: {node: '>=12.20.0'}
+    peerDependencies:
+      '@types/react': '>=17.0.0'
+      react: '>=17.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
 
   js-cookie@3.0.5:
     resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
@@ -2373,6 +2403,8 @@ snapshots:
 
   '@tanstack/query-core@5.50.1': {}
 
+  '@tanstack/query-core@5.51.21': {}
+
   '@tanstack/react-query@5.50.1(react@18.3.1)':
     dependencies:
       '@tanstack/query-core': 5.50.1
@@ -3163,6 +3195,16 @@ snapshots:
       '@pkgjs/parseargs': 0.11.0
 
   jiti@1.21.6: {}
+
+  jotai-tanstack-query@0.8.6(@tanstack/query-core@5.51.21)(jotai@2.9.2(@types/react@18.3.3)(react@18.3.1)):
+    dependencies:
+      '@tanstack/query-core': 5.51.21
+      jotai: 2.9.2(@types/react@18.3.3)(react@18.3.1)
+
+  jotai@2.9.2(@types/react@18.3.3)(react@18.3.1):
+    optionalDependencies:
+      '@types/react': 18.3.3
+      react: 18.3.1
 
   js-cookie@3.0.5: {}
 
