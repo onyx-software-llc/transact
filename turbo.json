@@ -2,13 +2,16 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "build": {
-      "outputs": ["dist/**"]
-    },
-    "check-types": {
-      "dependsOn": ["^check-types"]
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
+      "dependsOn": ["^build"]
     },
     "dev": {
-      "persistent": true,
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {},
+    "clean": {
       "cache": false
     }
   }
