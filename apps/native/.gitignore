@@ -9,6 +9,11 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+types/expo-env.d.ts
 
 # macOS
 .DS_Store
+
+# builds
+android/
+ios/
