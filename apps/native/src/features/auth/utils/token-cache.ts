@@ -24,7 +24,13 @@ const saveToken = async (key: string, value: string) => {
   }
 };
 
+const clearToken = async (key: string) => {
+  console.log(`Deleting ${key} 🔐 \n`);
+  await SecureStore.deleteItemAsync(key);
+};
+
 export default {
   getToken,
   saveToken,
+  clearToken,
 };

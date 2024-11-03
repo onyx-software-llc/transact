@@ -5,7 +5,7 @@ export default function SignOutButton() {
   const router = useRouter();
 
   const handleSignOut = () => {
-    router.push("/sign-in");
+    router.replace("/(public)/sign-in");
   };
 
   return (
