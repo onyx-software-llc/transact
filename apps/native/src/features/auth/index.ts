@@ -1,4 +1,5 @@
-import SigninScreen from "./screens/sign-in";
+import SignInScreen from "./screens/sign-in";
+import SignUpScreen from "./screens/sign-up";
 import tokenCache from "./utils/token-cache";
 
-export { SigninScreen, tokenCache };
+export { SignInScreen, SignUpScreen, tokenCache };

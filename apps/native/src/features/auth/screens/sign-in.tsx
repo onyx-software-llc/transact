@@ -4,7 +4,9 @@ import { z } from "zod";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { useRouter } from "expo-router";
 
+import { DEFAULT_ERROR_MESSAGE } from "../constants/ERROR_MESSAGE";
 import { isClerkError, getClerkErrorMessage } from "../lib/clerk";
 
 /**
@@ -17,12 +19,9 @@ const signInSchema = z.object({
 
 type SignInSchema = z.infer<typeof signInSchema>;
 
-const DEFAULT_ERROR_MESSAGE =
-  "An unexpected error occurred. Please try again or contact support.";
-
 export default function Signin() {
+  const router = useRouter();
   const { signIn, setActive, isLoaded } = useSignIn();
-
   const { control, handleSubmit } = useForm<SignInSchema>({
     resolver: zodResolver(signInSchema),
   });
@@ -54,18 +53,12 @@ export default function Signin() {
         "Error thrown during sign in, attempting to handle",
         JSON.stringify(e, null, 2)
       );
-
       if (isClerkError(e)) {
-        /**
-         * In order to add additional support or modify existing error messages,
-         * define a error code in the CLERK_ERROR_MESSAGES constant in clerk.ts
-         */
         return setErrorMessage(getClerkErrorMessage(e, DEFAULT_ERROR_MESSAGE));
       }
       if (e instanceof Error && "message" in e) {
         return setErrorMessage(e.message);
       }
-
       setErrorMessage(DEFAULT_ERROR_MESSAGE);
     } finally {
       console.log("(DEV) Sign in flow complete");
@@ -120,12 +113,18 @@ export default function Signin() {
         >
           <Text className="text-white text-center font-semibold">Sign in</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          className="bg-blue-500 p-4 rounded-lg"
-          onPress={() => null}
-        >
-          <Text className="text-white text-center font-semibold">Sign up</Text>
-        </TouchableOpacity>
+
+        <View className="mt-5">
+          <Text>Don't have an account?</Text>
+          <TouchableOpacity
+            className="bg-blue-500 p-4 rounded-lg"
+            onPress={() => router.push("/(public)/sign-up")}
+          >
+            <Text className="text-white text-center font-semibold">
+              Sign up
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );

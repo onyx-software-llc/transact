@@ -1,5 +1,5 @@
-import { SigninScreen } from "@/features/auth";
+import { SignInScreen } from "@/features/auth";
 
-export default function Signin() {
-  return <SigninScreen />;
+export default function SignInRoute() {
+  return <SignInScreen />;
 }
