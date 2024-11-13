@@ -25,7 +25,7 @@ type SignUpSchema = z.infer<typeof signUpSchema>;
 
 export default function Signup() {
   const router = useRouter();
-  const { signUp, setActive, isLoaded } = useSignUp();
+  const { signUp, isLoaded } = useSignUp();
   const {
     control,
     handleSubmit,
@@ -41,6 +41,7 @@ export default function Signup() {
     if (!isLoaded) return;
 
     setIsLoading(true);
+
     try {
       await signUp.create({
         emailAddress: data.email,
