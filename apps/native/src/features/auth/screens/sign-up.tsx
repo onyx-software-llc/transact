@@ -21,12 +21,7 @@ const signUpSchema = z
     message: "Passwords do not match",
   });
 
-const verifyEmailSchema = z.object({
-  code: z.string(),
-});
-
 type SignUpSchema = z.infer<typeof signUpSchema>;
-type VerifyEmailSchema = z.infer<typeof verifyEmailSchema>;
 
 export default function Signup() {
   const router = useRouter();
@@ -38,12 +33,7 @@ export default function Signup() {
   } = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
   });
-  const { control: verifyEmailControl, handleSubmit: verifyEmailHandleSubmit } =
-    useForm<VerifyEmailSchema>({
-      resolver: zodResolver(verifyEmailSchema),
-    });
 
-  const [verificationPending, setVerificationPending] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -52,16 +42,16 @@ export default function Signup() {
 
     setIsLoading(true);
     try {
-      // await signUp.create({
-      //   emailAddress: data.email,
-      //   password: data.password,
-      // });
+      await signUp.create({
+        emailAddress: data.email,
+        password: data.password,
+      });
 
-      // await signUp.prepareEmailAddressVerification({
-      //   strategy: "email_code",
-      // });
+      await signUp.prepareEmailAddressVerification({
+        strategy: "email_code",
+      });
 
-      setVerificationPending(true);
+      router.push("/(public)/verify-email");
     } catch (e: unknown) {
       console.log(
         "Error thrown during sign up, attempting to handle",
@@ -77,10 +67,6 @@ export default function Signup() {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const onVerifyEmail = async () => {
-    console.log("Verify email");
   };
 
   return (
@@ -151,38 +137,15 @@ export default function Signup() {
         >
           <Text className="text-white text-center font-semibold">Sign up</Text>
         </TouchableOpacity>
-
-        {/* If verification pending, add verification code input here */}
-        {verificationPending && (
-          <View>
-            <Controller
-              control={verifyEmailControl}
-              name="code"
-              render={({ field: { onChange, value } }) => (
-                <TextInput
-                  className="w-full border border-gray-300 rounded-lg p-3 mb-4"
-                  placeholder="Verification Code"
-                  value={value}
-                  onChangeText={onChange}
-                  keyboardType="number-pad"
-                  autoCapitalize="none"
-                />
-              )}
-            />
-          </View>
-        )}
-
-        <View className="mt-5">
-          <Text>Already have an account?</Text>
-          <TouchableOpacity
-            className="bg-blue-500 p-4 rounded-lg"
-            onPress={() => router.push("/(public)/sign-in")}
-          >
-            <Text className="text-white text-center font-semibold">
-              Sign In
-            </Text>
-          </TouchableOpacity>
-        </View>
+      </View>
+      <View className="mt-5">
+        <Text>Already have an account?</Text>
+        <TouchableOpacity
+          className="bg-blue-500 p-4 rounded-lg"
+          onPress={() => router.push("/(public)/sign-in")}
+        >
+          <Text className="text-white text-center font-semibold">Sign In</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

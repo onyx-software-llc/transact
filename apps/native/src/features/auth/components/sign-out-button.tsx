@@ -1,11 +1,11 @@
-import { useRouter } from "expo-router";
+import { useClerk } from "@clerk/clerk-expo";
 import { Text, TouchableOpacity } from "react-native";
 
 export default function SignOutButton() {
-  const router = useRouter();
+  const { signOut } = useClerk();
 
   const handleSignOut = () => {
-    router.replace("/(public)/sign-in");
+    signOut();
   };
 
   return (
