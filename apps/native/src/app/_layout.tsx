@@ -4,6 +4,7 @@ import "../../global.css";
 
 import { tokenCache } from "@/features/auth";
 import { useEffect } from "react";
+import { useTheme } from "@/lib/theme";
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
@@ -38,6 +39,8 @@ function InitializeClerk() {
 }
 
 export default function RootLayout() {
+  useTheme();
+
   return (
     <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
       <InitializeClerk />

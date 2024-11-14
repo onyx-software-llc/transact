@@ -11,7 +11,7 @@ export default function SignOutButton() {
 
   return (
     <TouchableOpacity onPress={handleSignOut}>
-      <Text>Sign Out</Text>
+      <Text className="dark:text-white">Sign Out</Text>
     </TouchableOpacity>
   );
 }

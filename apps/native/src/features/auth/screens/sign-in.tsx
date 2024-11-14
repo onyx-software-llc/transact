@@ -67,8 +67,8 @@ export default function Signin() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center p-4">
-      <Text className="font-bold text-2xl mb-8">Sign in</Text>
+    <View className="flex-1 justify-center items-center p-4 dark:bg-white">
+      <Text className="font-bold text-2xl mb-8 dark:text-white">Sign in</Text>
 
       <View className="w-full space-y-4">
         <View>
