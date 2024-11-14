@@ -24,9 +24,7 @@
       },
       "package": "com.saiyatech25.transact"
     },
-    "plugins": [
-      "expo-router"
-    ],
+    "plugins": ["expo-router", "expo-font", "expo-secure-store"],
     "experiments": {
       "typedRoutes": true
     },

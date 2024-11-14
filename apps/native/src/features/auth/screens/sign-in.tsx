@@ -67,7 +67,7 @@ export default function Signin() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center p-4 dark:bg-white">
+    <View className="flex-1 justify-center items-center p-4 dark:bg-black">
       <Text className="font-bold text-2xl mb-8 dark:text-white">Sign in</Text>
 
       <View className="w-full space-y-4">
@@ -77,7 +77,7 @@ export default function Signin() {
             name="email"
             render={({ field: { onChange, value } }) => (
               <TextInput
-                className="w-full border border-gray-300 rounded-lg p-3"
+                className="w-full border border-gray-300 rounded-lg p-3 dark:text-white"
                 placeholder="Email"
                 onChangeText={onChange}
                 value={value}
@@ -94,7 +94,7 @@ export default function Signin() {
             name="password"
             render={({ field: { onChange, value } }) => (
               <TextInput
-                className="w-full border border-gray-300 rounded-lg p-3"
+                className="w-full border border-gray-300 rounded-lg p-3 dark:text-white"
                 placeholder="Password"
                 onChangeText={onChange}
                 value={value}

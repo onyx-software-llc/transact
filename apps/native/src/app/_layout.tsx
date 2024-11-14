@@ -1,5 +1,5 @@
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
-import { useRouter, useSegments, Slot } from "expo-router";
+import { useRouter, useSegments, Slot, Stack } from "expo-router";
 import "../../global.css";
 
 import { tokenCache } from "@/features/auth";
@@ -28,7 +28,7 @@ function InitializeClerk() {
 
     // If the user is signed in and not in the protected group, redirect to the protected group
     if (isSignedIn && !inProtectedGroup) {
-      router.replace("/(protected)/(tabs)/");
+      router.replace("/(protected)/(tabs)");
     } else if (!isSignedIn) {
       router.replace("/(public)/sign-in");
     }
