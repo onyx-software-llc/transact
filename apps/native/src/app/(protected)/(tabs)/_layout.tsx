@@ -47,6 +47,13 @@ export default function Layout() {
           >
             <TabButton>Expenses</TabButton>
           </TabTrigger>
+          <TabTrigger
+            asChild
+            name="settings"
+            href="/(protected)/(tabs)/settings"
+          >
+            <TabButton>Settings</TabButton>
+          </TabTrigger>
         </TabList>
       </Tabs>
     </SafeAreaView>
