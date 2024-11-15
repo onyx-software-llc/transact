@@ -5,8 +5,9 @@ import { Text, TouchableOpacity, useColorScheme, View } from "react-native";
 export default function Home() {
   const { setTheme, toggleTheme } = useThemeContext();
   const colorScheme = useColorScheme();
+
   return (
-    <View className="justify-center items-center dark:bg-blue-500 w-full h-full">
+    <View className="flex-1 justify-center items-center">
       <Text className="font-bold text-2xl dark:text-white">Home</Text>
 
       <SignOutButton />
@@ -16,8 +17,9 @@ export default function Home() {
       <TouchableOpacity onPress={() => setTheme("system")}>
         <Text className="dark:text-white">Set theme to system</Text>
       </TouchableOpacity>
-      <Text className="font-bold text-2xl dark:text-black">
-        Color scheme: {colorScheme}
+      <Text className="font-bold text-2xl dark:text-white">
+        Color scheme:{" "}
+        <Text className="text-red-500 dark:text-white">{colorScheme}</Text>
       </Text>
     </View>
   );
