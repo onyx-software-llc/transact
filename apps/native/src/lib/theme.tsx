@@ -5,19 +5,23 @@
 
 import { useColorScheme } from "nativewind";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useContext, createContext, useLayoutEffect } from "react";
+import { useContext, createContext, useLayoutEffect, useState } from "react";
 
 export type Theme = "dark" | "light" | "system";
+
+export const ThemeOptions: Theme[] = ["dark", "light", "system"];
 
 /**
  * Set the theme to either user preference or system default
  * DO NOT EXPORT THIS DIRECTLY, use useThemeContext instead
  */
 function useTheme() {
+  const [themeSelection, setThemeSelection] = useState<Theme>("system");
   const { setColorScheme, colorScheme } = useColorScheme();
 
   const setTheme = (t: Theme): void => {
     setColorScheme(t);
+    setThemeSelection(t);
     AsyncStorage.setItem("user_selected_theme", t);
   };
 
@@ -38,7 +42,7 @@ function useTheme() {
     initTheme();
   }, []);
 
-  return { setTheme, toggleTheme };
+  return { setTheme, toggleTheme, themeSelection };
 }
 
 /**
@@ -48,10 +52,11 @@ function useTheme() {
 export const ThemeContext = createContext<ReturnType<typeof useTheme>>({
   setTheme: () => {},
   toggleTheme: () => {},
+  themeSelection: "system",
 });
 
 /**
- * Wrap your app in this provider to ensure the theme is managed correctly
+ * Wrap the app with this provider to ensure the theme is managed correctly
  */
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   return (

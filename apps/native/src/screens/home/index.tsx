@@ -3,7 +3,7 @@ import { useThemeContext } from "@/lib/theme";
 import { Text, TouchableOpacity, useColorScheme, View } from "react-native";
 
 export default function Home() {
-  const { setTheme, toggleTheme } = useThemeContext();
+  const { setTheme, toggleTheme, themeSelection } = useThemeContext();
   const colorScheme = useColorScheme();
 
   return (
@@ -20,6 +20,10 @@ export default function Home() {
       <Text className="font-bold text-2xl dark:text-white">
         Color scheme:{" "}
         <Text className="text-red-500 dark:text-white">{colorScheme}</Text>
+      </Text>
+      <Text className="font-bold text-2xl dark:text-white">
+        Theme Selection:{" "}
+        <Text className="text-red-500 dark:text-white">{themeSelection}</Text>
       </Text>
     </View>
   );

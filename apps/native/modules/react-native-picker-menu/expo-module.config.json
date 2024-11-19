@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android", "web"],
+  "apple": {
+    "modules": ["ReactNativePickerMenuModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.pickermenu.ReactNativePickerMenuModule"]
+  }
+}
