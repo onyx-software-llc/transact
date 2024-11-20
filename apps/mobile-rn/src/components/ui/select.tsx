@@ -3,8 +3,6 @@ import * as React from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { Check } from "@/lib/icons/Check";
-import { ChevronDown } from "@/lib/icons/ChevronDown";
-import { ChevronUp } from "@/lib/icons/ChevronUp";
 import { cn } from "@/lib/utils";
 import { ChevronsUpDown } from "@/lib/icons/ChevronsUpDown";
 
@@ -23,7 +21,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex flex-row h-10 native:h-12 items-center text-sm justify-end rounded-md bg-background px-3 py-2 text-muted-foreground [&>span]:line-clamp-1",
+      "flex flex-row  items-center text-sm justify-end rounded-md bg-background py-2 text-muted-foreground [&>span]:line-clamp-1",
       props.disabled && "opacity-50",
       className
     )}
@@ -32,7 +30,7 @@ const SelectTrigger = React.forwardRef<
     <>{children}</>
     <View className="ml-2">
       <ChevronsUpDown
-        size={16}
+        size={18}
         aria-hidden={true}
         className="text-foreground text-zinc-500"
       />
@@ -56,7 +54,7 @@ const SelectContent = React.forwardRef<
           <SelectPrimitive.Content
             ref={ref}
             className={cn(
-              "relative z-50 max-h-96 min-w-[8rem] rounded-md bg-popover shadow-md shadow-foreground/10 py-2 px-1 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+              "relative z-50 max-h-96 min-w-[8rem] rounded-lg bg-popover shadow-md shadow-foreground/10 py-2 px-1 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
               position === "popper" &&
                 "data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
               open
@@ -106,7 +104,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative web:group flex flex-row w-full items-center rounded-sm py-1 pl-8 active:bg-accent",
+      "relative web:group flex flex-row w-full items-center rounded-sm py-2 pl-8 active:bg-accent",
       props.disabled && "web:pointer-events-none opacity-50",
       className
     )}

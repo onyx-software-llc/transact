@@ -1,18 +1,20 @@
-import { TouchableOpacity, Text } from "react-native";
+import { Pressable } from "react-native";
 
 export type SettingsButtonProps = {
-  title: string;
   onPress: () => void;
-  className?: string;
+  children: React.ReactNode;
 };
 
 export default function SettingsButton({
-  title,
+  children,
   onPress,
 }: SettingsButtonProps) {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <Text>{title}</Text>
-    </TouchableOpacity>
+    <Pressable
+      onPress={onPress}
+      className="flex-row items-center justify-between mx-3 px-3 py-4 active:bg-zinc-100 dark:active:bg-zinc-900 rounded-md"
+    >
+      {children}
+    </Pressable>
   );
 }

@@ -7,25 +7,39 @@ import {
   TabTrigger,
   TabTriggerSlotProps,
 } from "expo-router/ui";
-import { Pressable, Text } from "react-native";
+import { Pressable } from "react-native";
+import React from "react";
 import { Ref } from "react";
 import { forwardRef } from "react";
+import { Settings } from "@/lib/icons/Settings";
+import { House } from "@/lib/icons/House";
+import { CreditCard } from "@/lib/icons/CreditCard";
 
 export type TabButtonProps = TabTriggerSlotProps & {};
 
 export const TabButton = forwardRef(
   ({ children, isFocused, ...props }: TabButtonProps, ref: Ref<View>) => {
+    const colorClass = isFocused
+      ? "text-red-500 dark:text-red-500"
+      : "text-zinc-500";
+
     return (
       <Pressable ref={ref} {...props}>
-        <Text
-          className={` ${
-            isFocused
-              ? "text-red-500 dark:text-red-500" //focused
-              : "text-black dark:text-white" //unfocused
-          }`}
-        >
-          {children}
-        </Text>
+        <View>
+          {React.Children.map(children, (child) =>
+            React.isValidElement(child)
+              ? React.cloneElement(
+                  child as React.ReactElement<{ className?: string }>,
+                  {
+                    className: `${
+                      (child as React.ReactElement<{ className?: string }>)
+                        .props.className || ""
+                    } ${colorClass}`,
+                  }
+                )
+              : child
+          )}
+        </View>
       </Pressable>
     );
   }
@@ -38,21 +52,27 @@ export default function Layout() {
         <TabSlot />
         <TabList className="w-full px-20">
           <TabTrigger asChild name="index" href="/(protected)/(tabs)">
-            <TabButton>Home</TabButton>
+            <TabButton>
+              <House size={24} />
+            </TabButton>
           </TabTrigger>
           <TabTrigger
             asChild
             name="expenses"
             href="/(protected)/(tabs)/expenses"
           >
-            <TabButton>Expenses</TabButton>
+            <TabButton>
+              <CreditCard size={24} className="text-inherit" />
+            </TabButton>
           </TabTrigger>
           <TabTrigger
             asChild
             name="settings"
             href="/(protected)/(tabs)/settings"
           >
-            <TabButton>Settings</TabButton>
+            <TabButton>
+              <Settings size={24} className="text-inherit" />
+            </TabButton>
           </TabTrigger>
         </TabList>
       </Tabs>
