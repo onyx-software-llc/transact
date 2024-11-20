@@ -39,7 +39,7 @@ export default function VerifyEmailScreen() {
       });
       setActive({ session: verified.createdSessionId });
 
-      router.replace("/(protected)/(tabs)/");
+      router.replace("/(protected)/(tabs)");
     } catch (e) {
       if (isClerkError(e)) {
         return setErrorMessage(getClerkErrorMessage(e, DEFAULT_ERROR_MESSAGE));

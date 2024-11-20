@@ -25,24 +25,23 @@ function useTheme() {
     AsyncStorage.setItem("user_selected_theme", t);
   };
 
-  const toggleTheme = (): void => {
-    const t = colorScheme === "dark" ? "light" : "dark";
-    setTheme(t);
-    AsyncStorage.setItem("user_selected_theme", t);
-  };
-
   useLayoutEffect(() => {
     const initTheme = async () => {
       const t = (await AsyncStorage.getItem(
         "user_selected_theme"
       )) as Theme | null;
 
-      setColorScheme(t || "system");
+      if (t) {
+        setColorScheme(t);
+        setThemeSelection(t);
+      } else {
+        setColorScheme("system");
+      }
     };
     initTheme();
   }, []);
 
-  return { setTheme, toggleTheme, themeSelection };
+  return { setTheme, themeSelection };
 }
 
 /**
@@ -51,7 +50,6 @@ function useTheme() {
  */
 export const ThemeContext = createContext<ReturnType<typeof useTheme>>({
   setTheme: () => {},
-  toggleTheme: () => {},
   themeSelection: "system",
 });
 

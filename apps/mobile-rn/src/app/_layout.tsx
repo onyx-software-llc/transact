@@ -1,5 +1,6 @@
+import { PortalHost } from "@rn-primitives/portal";
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
-import { useRouter, useSegments, Slot, Stack } from "expo-router";
+import { useRouter, useSegments, Slot } from "expo-router";
 import "../../global.css";
 
 import { tokenCache } from "@/features/auth";
@@ -43,6 +44,7 @@ export default function RootLayout() {
     <ThemeProvider>
       <ClerkProvider tokenCache={tokenCache} publishableKey={publishableKey}>
         <InitializeClerk />
+        <PortalHost />
       </ClerkProvider>
     </ThemeProvider>
   );
