@@ -7,11 +7,21 @@ import { tokenCache } from "@/features/auth";
 import { useEffect } from "react";
 import { ThemeProvider } from "@/lib/theme";
 
+// Required polyfill for PowerSync SDK
+import "@azure/core-asynciterator-polyfill";
+
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
+const powersyncEndpoint = process.env.EXPO_PUBLIC_POWERSYNC_ENDPOINT!;
 
 if (!publishableKey) {
   throw new Error(
     "Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env"
+  );
+}
+
+if (!powersyncEndpoint) {
+  throw new Error(
+    "Missing PowerSync Endpoint. Please set EXPO_PUBLIC_POWERSYNC_ENDPOINT in your .env"
   );
 }
 

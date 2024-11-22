@@ -14,6 +14,8 @@ import { forwardRef } from "react";
 import { Settings } from "@/lib/icons/Settings";
 import { House } from "@/lib/icons/House";
 import { CreditCard } from "@/lib/icons/CreditCard";
+import { setupPowerSync } from "@/lib/sync/db";
+import { useEffect } from "react";
 
 export type TabButtonProps = TabTriggerSlotProps & {};
 
@@ -45,37 +47,47 @@ export const TabButton = forwardRef(
   }
 );
 
+function SetupPowerSync({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    setupPowerSync();
+  }, []);
+
+  return <>{children}</>;
+}
+
 export default function Layout() {
   return (
-    <SafeAreaView className="flex-1 bg-white dark:bg-black">
-      <Tabs>
-        <TabSlot />
-        <TabList className="w-full px-20">
-          <TabTrigger asChild name="index" href="/(protected)/(tabs)">
-            <TabButton>
-              <House size={24} />
-            </TabButton>
-          </TabTrigger>
-          <TabTrigger
-            asChild
-            name="expenses"
-            href="/(protected)/(tabs)/expenses"
-          >
-            <TabButton>
-              <CreditCard size={24} className="text-inherit" />
-            </TabButton>
-          </TabTrigger>
-          <TabTrigger
-            asChild
-            name="settings"
-            href="/(protected)/(tabs)/settings"
-          >
-            <TabButton>
-              <Settings size={24} className="text-inherit" />
-            </TabButton>
-          </TabTrigger>
-        </TabList>
-      </Tabs>
-    </SafeAreaView>
+    <SetupPowerSync>
+      <SafeAreaView className="flex-1 bg-white dark:bg-black">
+        <Tabs>
+          <TabSlot />
+          <TabList className="w-full px-20">
+            <TabTrigger asChild name="index" href="/(protected)/(tabs)">
+              <TabButton>
+                <House size={24} />
+              </TabButton>
+            </TabTrigger>
+            <TabTrigger
+              asChild
+              name="expenses"
+              href="/(protected)/(tabs)/expenses"
+            >
+              <TabButton>
+                <CreditCard size={24} className="text-inherit" />
+              </TabButton>
+            </TabTrigger>
+            <TabTrigger
+              asChild
+              name="settings"
+              href="/(protected)/(tabs)/settings"
+            >
+              <TabButton>
+                <Settings size={24} className="text-inherit" />
+              </TabButton>
+            </TabTrigger>
+          </TabList>
+        </Tabs>
+      </SafeAreaView>
+    </SetupPowerSync>
   );
 }

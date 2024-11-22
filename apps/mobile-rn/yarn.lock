@@ -25,6 +25,11 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
+"@azure/core-asynciterator-polyfill@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@azure/core-asynciterator-polyfill/-/core-asynciterator-polyfill-1.0.2.tgz#0dd3849fb8d97f062a39db0e5cadc9ffaf861fec"
+  integrity sha512-3rkP4LnnlWawl0LZptJOdXNrT/fHp2eQMadoasa6afspXdpGrtPZuAQc2PD0cpgyuoXtUWyC3tv7xfntjGS5Dw==
+
 "@babel/code-frame@7.10.4", "@babel/code-frame@~7.10.4":
   version "7.10.4"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.10.4.tgz#168da1a36e90da68ae8d49c0f1b48c7c6249213a"
@@ -444,7 +449,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.25.9"
 
-"@babel/plugin-transform-async-generator-functions@^7.25.4":
+"@babel/plugin-transform-async-generator-functions@^7.25.4", "@babel/plugin-transform-async-generator-functions@^7.25.9":
   version "7.25.9"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-async-generator-functions/-/plugin-transform-async-generator-functions-7.25.9.tgz#1b18530b077d18a407c494eb3d1d72da505283a2"
   integrity sha512-RXV6QAzTBbhDMO9fWwOmwwTuYaiPbggWQ9INdZqAYeSHyG7FzQ+nOZaUUjNwKv9pV3aE4WFqFm1Hnbci5tBCAw==
@@ -1715,6 +1720,11 @@
     "@types/yargs" "^17.0.8"
     chalk "^4.0.0"
 
+"@journeyapps/react-native-quick-sqlite@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@journeyapps/react-native-quick-sqlite/-/react-native-quick-sqlite-2.2.0.tgz#d1cd66fe72f9d45e2a49a61d7015e80ba622992f"
+  integrity sha512-9abJ5YCgQ2Jie9B3mGtopfx8LhUB9S9I+DSd9ux1CA6DxnJMZagYlIE/x8nOghRCvtQF3jaF5DvrNoSkadkLVw==
+
 "@jridgewell/gen-mapping@^0.3.2", "@jridgewell/gen-mapping@^0.3.5":
   version "0.3.5"
   resolved "https://registry.yarnpkg.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.5.tgz#dcce6aff74bdf6dad1a95802b69b04a2fcb1fb36"
@@ -1787,6 +1797,26 @@
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
+
+"@powersync/common@1.21.0":
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/@powersync/common/-/common-1.21.0.tgz#c22576aee498a8bfbe3418555138b9dbda94f485"
+  integrity sha512-G77WGytQb3JwqE9vlxcQZwf8w/tBYGJfU99RqJMrD5Tyb4VrCeOrEcmulmL/M7Q+ZYOjpIhpVwQZB+pNocY0jg==
+  dependencies:
+    js-logger "^1.6.1"
+
+"@powersync/react-native@^1.16.0":
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/@powersync/react-native/-/react-native-1.16.0.tgz#c0d5e2a9b118697e389f143b9732ae1a37c73010"
+  integrity sha512-R/+FNrkS1+g5pgZi4YYis6pdufC4GedCVdY7wTaWMNAsK2gln3iJWlIQRxFvHybDZucMOCWKn5p95ahv4iFGvQ==
+  dependencies:
+    "@powersync/common" "1.21.0"
+    "@powersync/react" "1.5.1"
+
+"@powersync/react@1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@powersync/react/-/react-1.5.1.tgz#bb503f7710f5c5941ed8695ab3fdd57e9a82add7"
+  integrity sha512-x/uKsNOoDzUjdXgCMMrJmpZQMTEpddk64XDjW684bFsld3fqL0t5t3ULOpAHsm1vl/hKh77Xa9nthLUCXpKSgw==
 
 "@radix-ui/number@1.1.0":
   version "1.1.0"
@@ -5684,6 +5714,11 @@ js-cookie@3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.5.tgz#0b7e2fd0c01552c58ba86e0841f94dc2557dcdbc"
   integrity sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==
+
+js-logger@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/js-logger/-/js-logger-1.6.1.tgz#8f09671b515e4a6f31dced8fdb8923432e2c60af"
+  integrity sha512-yTgMCPXVjhmg28CuUH8CKjU+cIKL/G+zTu4Fn4lQxs8mRFH/03QTNvEFngcxfg/gRDiQAOoyCKmMTOm9ayOzXA==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
